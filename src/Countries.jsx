@@ -16,7 +16,7 @@ const Countries = () => {
             <h2>Countries: {countries.length}</h2>
             
             {
-                countries.map(country => <Country key={country} country={country}/>)
+                countries.slice(0, 5).map(country => <Country key={country} country={country}/>)
             }
         </div>
     );
