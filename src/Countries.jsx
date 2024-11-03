@@ -13,15 +13,16 @@ const Countries = () => {
   }, []);
 
     const handleVisitedCountries = (country) => {
-        console.log("props transfered successfully")
+        const newVisitedCountries = [...visitedCountries, country];
+        setVisitedCountries(newVisitedCountries);
     }
     
   return (
     <div>
       <h2>Countries: {countries.length}</h2>
       <div>
-        <h2>Visited Countrier</h2>
-        <ul></ul>
+              <h2>Visited Countrier: { visitedCountries.length}</h2>
+        <ul>{visitedCountries}</ul>
       </div>
       <div className="countries">
         {countries.map((country) => (

@@ -7,7 +7,7 @@ const Country = ({ country, handleVisitedCountries}) => {
     const handleVisited = () => {
         setVisited(!visited);
 }
-    console.log(handleVisitedCountries);
+    
   return (
     <div
       style={{
@@ -21,7 +21,8 @@ const Country = ({ country, handleVisitedCountries}) => {
       <img style={{ height: "10rem" }} src={flags?.png} alt="" />
       <h4>Shortcode: {cca3}</h4>
       <h4>Area: {area}</h4>
-      <h4> Population: {population}</h4>
+          <h4> Population: {population}</h4>
+          <button onClick={() => handleVisitedCountries(country)}>Mark Visited</button> <br />
       <button
         onClick={handleVisited}
         style={{ backgroundColor: "purple" }}
