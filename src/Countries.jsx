@@ -1,25 +1,27 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import Country from "./Country";
+import "./Countries.css";
 
 const Countries = () => {
+  const [countries, setcountries] = useState([]);
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all")
+      .then((res) => res.json())
+      .then((data) => setcountries(data));
+  }, []);
 
-    const [countries, setcountries] = useState([])
-    useEffect(() => {
-        fetch("https://restcountries.com/v3.1/all")
-          .then((res) => res.json())
-          .then((data) => setcountries(data));
-    }, [])
+  return (
+    <div>
+      <h2>Countries: {countries.length}</h2>
 
-    return (
-        <div>
-            <h2>Countries: {countries.length}</h2>
-            
-            {
-                countries.slice(0, 5).map(country => <Country key={country} country={country}/>)
-            }
-        </div>
-    );
+      <div className="countries">
+        {countries.map((country) => (
+          <Country key={country} country={country} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Countries;
